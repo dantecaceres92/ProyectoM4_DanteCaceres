@@ -2,7 +2,7 @@
 
 SPA de gestión de tareas para empleados de una pequeña empresa (cliente de **MateCode**). Permite registrarse, iniciar sesión, gestionar tareas propias en tiempo real y recibir por email un resumen del estado de las tareas.
 
-🔗 **Producción:** https://TU-PROYECTO.vercel.app  <!-- reemplazar -->
+🔗 **Producción:** https://proyecto-m4-dante-caceres.vercel.app
 
 ## Stack
 
@@ -131,8 +131,6 @@ Las variables con prefijo `VITE_` se incluyen en el bundle del navegador (la con
 - **Hook:** `useTasks` (suscripción, **unsubscribe al desmontar**, errores).
 
 ## Uso de IA en el desarrollo
-
-<!-- ✍️ Completá/ajustá esta sección con tu experiencia real -->
 
 Usé un asistente de IA (Claude) como pair programmer senior.
 
