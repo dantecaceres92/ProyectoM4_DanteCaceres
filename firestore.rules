@@ -1,0 +1,29 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /tasks/{taskId} {
+      // Leer / borrar: solo el dueño
+      allow read, delete: if request.auth != null
+        && resource.data.userId == request.auth.uid;
+
+      // Crear: el userId debe ser el del usuario logueado y el título válido
+      allow create: if request.auth != null
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0
+        && request.resource.data.title.size() <= 100
+        && request.resource.data.completed is bool;
+
+      // Editar: solo el dueño y no puede cambiar el userId
+      allow update: if request.auth != null
+        && resource.data.userId == request.auth.uid
+        && request.resource.data.userId == resource.data.userId
+        && request.resource.data.title is string
+        && request.resource.data.title.size() > 0;
+    }
+    // Todo lo demás: cerrado
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
